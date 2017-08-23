@@ -1,0 +1,32 @@
+<div class='app-container'>
+  <div class='input-form'>
+    <h3>Search for location</h3>
+    {{#bs-form formLayout=formLayout model=this onSubmit=(action "submit") as |form|}}
+      {{form.element controlType="text" placeholder="City" property="city" required=true}}
+      {{form.element controlType="text" placeholder="Country" property="country" helpText="Minimum 2 characters"}}
+      {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+    {{/bs-form}}
+  </div>
+
+  <div class='right-half'>
+
+    <div>
+      {{#bs-button type="primary" onClick=(action "randomizeCity")}}Click {{/bs-button}}
+    to display the weather in a random location!
+    </div>
+
+    <div class='result-area'>
+      {{#if response}}
+        The current temperature at <b>{{response.coord.lat}}{{latSuffix}}, {{response.coord.lon}}{{longSuffix}}</b>
+        {{#if response.name}}
+          ({{response.name}}, {{response.sys.country}})
+        {{/if}}
+        is
+         <b>{{response.main.temp}}</b> Celsius with a humidiy of {{response.main.humidity}}%.
+
+      {{else}}
+        {{errMessage}}
+      {{/if}}
+    </div>
+  </div>
+</div>

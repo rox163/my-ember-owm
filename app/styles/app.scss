@@ -1,0 +1,25 @@
+.app-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  margin: 15px;
+
+  .input-form {
+    width: 400px;
+  }
+
+  .right-half {
+    flex: 1;
+    justify-content: flex-end;
+    margin: 25px 0 0 30px;
+
+    .result-area {
+      margin-top: 30px;
+    }
+  }
+
+}
+
+
+
+@import "ember-bootstrap/bootstrap";
